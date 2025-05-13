@@ -14,3 +14,9 @@ services:
         value: 3.11.0
       - key: DJANGO_SETTINGS_MODULE
         value: hoysala.settings
+      - key: DJANGO_SUPERUSER_USERNAME
+        value: admin
+      - key: DJANGO_SUPERUSER_EMAIL
+        value: admin@hoysala.com
+      - key: DJANGO_SUPERUSER_PASSWORD
+        generateValue: true
