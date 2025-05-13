@@ -31,7 +31,7 @@ class BaseModel(models.Model):
     Abstract base model to store common fields and handle soft deletion.
     """
     uid = models.UUIDField(default=uuid.uuid4, editable=False)
-    ext_id = models.CharField() #unique id 10 char length 
+    ext_id = models.CharField(max_length=10) #unique id 10 char length 
     created_at = models.DateTimeField(auto_now_add=True)  # Automatically set the time when an object is created.
     updated_at = models.DateTimeField(auto_now=True)      # Automatically set the time when an object is updated.
     deleted_at = models.DateTimeField(null=True, blank=True)  # Field for soft deletion timestamp
@@ -163,6 +163,3 @@ class Product(BaseModel):
 class ProductImage(BaseModel):
     product = models.ForeignKey(Product, related_name='images', on_delete=models.CASCADE)
     image_url = models.URLField()
-
-    class Meta:
-        verbose_name = "Product Image"
