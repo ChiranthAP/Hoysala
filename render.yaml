@@ -1,21 +1,11 @@
-databases:
-  - name: hoysaladb
-    plan: free
-    databaseName: hoysala
-    user: hoysala
-
 services:
   - type: web
     plan: free
     name: hoysala
     runtime: python
     buildCommand: './build.sh'
-    startCommand: 'python -m gunicorn hoysala.asgi:application -k uvicorn.workers.UvicornWorker' 
+    startCommand: 'python -m gunicorn hoysala.asgi:application -k uvicorn.workers.UvicornWorker'
     envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: hoysaladb
-          property: connectionString
       - key: SECRET_KEY
         generateValue: true
       - key: WEB_CONCURRENCY
