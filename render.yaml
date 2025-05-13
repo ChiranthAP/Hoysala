@@ -4,9 +4,13 @@ services:
     name: hoysala
     runtime: python
     buildCommand: './build.sh'
-    startCommand: 'python -m gunicorn hoysala.asgi:application -k uvicorn.workers.UvicornWorker'
+    startCommand: 'gunicorn hoysala.wsgi:application'
     envVars:
       - key: SECRET_KEY
         generateValue: true
       - key: WEB_CONCURRENCY
         value: 4
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DJANGO_SETTINGS_MODULE
+        value: hoysala.settings
