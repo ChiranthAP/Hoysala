@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Temple, TempleGalleryImage, ArchitectureFeature, Product, ProductImage
+from homepage.models import Temple, TempleGalleryImage, ArchitectureFeature, Product, ProductImage
+
+# The models are already registered in homepage/admin.py
 
 @admin.register(Temple)
 class TempleAdmin(admin.ModelAdmin):
